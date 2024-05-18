@@ -24,7 +24,7 @@ namespace Catalog.API.Products.CreateProduct
 
         }
     }
-    internal class CreateProductCommandHandler(IDocumentSession session, IValidator<CreateProductCommand> validator, ILogger<CreateProductCommandHandler> logger) : ICommandHandler<CreateProductCommand, CreateProductResult>
+    internal class CreateProductCommandHandler(IDocumentSession session, ILogger<CreateProductCommandHandler> logger) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async  Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
