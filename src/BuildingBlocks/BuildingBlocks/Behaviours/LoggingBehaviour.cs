@@ -25,8 +25,9 @@ namespace BuildingBlocks.Behaviours
             {
                 logger.LogWarning("[Performance] The request took {TimeTaken}",
                     typeof(TRequest).Name, timeTaken.Seconds);
-                return response;
+               
             }
+            return response;
         }
     }
 }

@@ -1,7 +1,5 @@
 
 
-using Marten;
-
 var builder = WebApplication.CreateBuilder(args);
 var assembly = typeof(Program).Assembly;
 builder.Services.AddMediatR(config =>
@@ -17,6 +15,11 @@ builder.Services.AddMarten(opts =>
     opts.Connection(builder.Configuration.GetConnectionString("Database")!);
 
 }).UseLightweightSessions();
+if (builder.Environment.IsDevelopment())
+    builder.Services.InitializeMartenWith<CatalogIntialData>();
+{
+
+}
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 var app = builder.Build();
 
