@@ -19,6 +19,5 @@ namespace Basket.API.Basket.DeleteBasket
             return new DeleteBasketResult(true);
         }
     }
-    {
-    }
+    
 }
