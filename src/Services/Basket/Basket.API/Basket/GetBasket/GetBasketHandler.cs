@@ -13,6 +13,5 @@ namespace Basket.API.Basket.GetBasket
             return new GetBasketResult(new ShoppingCart("You"));
         }
     }
-    {
-    }
+
 }
