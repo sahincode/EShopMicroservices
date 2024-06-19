@@ -3,6 +3,8 @@
 
 
 using BuildingBlocks.Exceptions.Handler;
+using Microsoft.Extensions.Configuration;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 // add services to the container
@@ -24,11 +26,17 @@ builder.Services.AddScoped<IBasketRepository, BasketReposiitory>();
 builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
 builder.Services.AddStackExchangeRedisCache(opts =>
 {
-    opts.Configuration = builder.Configuration.GetConnectionString("Redis");
-   
+    opts.Configuration = builder.Configuration.GetSection("Redis:Configuration").Value;
+    opts.InstanceName= builder.Configuration.GetSection("Redis:InstanceName").Value;
+    opts.ConfigurationOptions= ConfigurationOptions.Parse(builder.Configuration.GetSection("Redis:Configuration").Value!);
+    opts.ConfigurationOptions.ConnectTimeout = 5000;
+    opts.ConfigurationOptions.SyncTimeout = 5000;
+    opts.ConfigurationOptions.AbortOnConnectFail = false;
+
+
 });
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
-
+builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 //configure the http request pipeline
@@ -37,5 +45,5 @@ app.UseExceptionHandler(options =>
 {
 
 });
-
+app.UseHealthChecks("/health");
 app.Run();
