@@ -30,9 +30,17 @@ namespace Discount.Grpc.Services
             var couponModel = coupon.Adapt<CouponModel>();
             return couponModel;
         }
-        public override Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
+        public override async Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
         {
-            return base.DeleteDiscount(request, context);
+           var coupon = await dbContext.Coupons.FirstOrDefaultAsync(x=>x.ProductName== request.ProductName);
+            if(coupon is null)
+                throw new RpcException(new Status(StatusCode.NotFound, $"Discount with the {request.ProductName} not found."));
+            dbContext.Coupons.Remove(coupon);
+            await dbContext.SaveChangesAsync();
+            logger.LogInformation("Discount is successfully deleted. ProductName :{ProductName}", coupon.ProductName);
+            return new DeleteDiscountResponse{ Success=true};
+
+
         }
         public override  async Task<CouponModel> UpdateDiscount(UpdateDiscountRequest request, ServerCallContext context)
         {
