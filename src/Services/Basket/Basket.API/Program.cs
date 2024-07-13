@@ -3,6 +3,7 @@
 
 
 using BuildingBlocks.Exceptions.Handler;
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,7 @@ using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 // add services to the container
+//Application Services
 var assembly = typeof(Program).Assembly;
 builder.Services.AddCarter();
 builder.Services.AddMediatR(config =>
@@ -19,6 +21,7 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(ValidationBehavior<,>));
     config.AddOpenBehavior(typeof(LoggingBehaviour<,>));
 });
+//Data Services
 builder.Services.AddMarten(opts =>
 {
     opts.Connection(builder.Configuration.GetConnectionString("Database")!);
@@ -38,6 +41,12 @@ builder.Services.AddStackExchangeRedisCache(opts =>
 
 
 });
+//Grpc Services
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(opts =>
+{
+    opts.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+});
+
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddHealthChecks().
     AddNpgSql(builder.Configuration.GetConnectionString("Database")!).

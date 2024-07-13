@@ -28,4 +28,4 @@ message UpdateDiscountRequest{
 	string productName=1;
 }message DeleteDiscountResponse{
 	bool success=1;
-}
+}++
