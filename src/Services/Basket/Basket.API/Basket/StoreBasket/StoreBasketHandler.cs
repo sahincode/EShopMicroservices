@@ -26,7 +26,7 @@ namespace Basket.API.Basket.StoreBasket
         }
         public async Task DeducDiscount(ShoppingCart cart, CancellationToken cancellationToken)
         {
-            foreach (var item in command.Cart.Items)
+            foreach (var item in cart.Items)
             {
                 var coupon = await discount.GetDiscountAsync(new GetDiscountRequest { ProductName = item.ProductName }, cancellationToken: cancellationToken);
                 item.Price -= coupon.Amount;
