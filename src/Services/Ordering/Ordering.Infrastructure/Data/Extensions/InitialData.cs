@@ -5,7 +5,7 @@
         public static IEnumerable<Customer> Customers =>
             new List<Customer> {
                 Customer.Create(CustomerId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6cc18923")),"Sahin","sahin@gmail.com"),
-                Customer.Create(CustomerId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6cc18923")),"Elkin","elkin@gmail.com")
+                Customer.Create(CustomerId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6ab18923")),"Elkin","elkin@gmail.com")
 
 
 
@@ -13,9 +13,9 @@
         public static IEnumerable<Product> Products =>
            new List<Product> {
                 Product.Create(ProductId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6cc18923")),"Iphone",1000),
-                Product.Create(ProductId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6bc18923")),"Samsung",500),
-                Product.Create(ProductId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6ac18923")),"Samsung",500),
-                Product.Create(ProductId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6ec18923")),"Samsung",500)
+                Product.Create(ProductId.Of(new Guid("d43ed3e4-b474-4753-80ac-a2164a7f767c")),"Samsung",500),
+                Product.Create(ProductId.Of(new Guid("be1bece4-5708-4daf-92e5-5f9fabf51a4a")),"Samsung",500),
+                Product.Create(ProductId.Of(new Guid("7ea9b3fb-1f01-48b4-9e97-8346fe96caea")),"Samsung",500)
 
 
 
@@ -33,23 +33,23 @@
 
                 var order1 = Order.Create(
                                 OrderId.Of(Guid.NewGuid()),
-                                CustomerId.Of(new Guid("58c49479-ec65-4de2-86e7-033c546291aa")),
+                                CustomerId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6cc18923")),
                                 OrderName.Of("ORD_1"),
                                 shippingAddress: address1,
                                 billingAddress: address1,
                                 payment1);
-                order1.Add(ProductId.Of(new Guid("5334c996-8457-4cf0-815c-ed2b77c4ff61")), 2, 500);
-                order1.Add(ProductId.Of(new Guid("c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914")), 1, 400);
+                order1.Add(ProductId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6cc18923")), 2, 1000);
+                order1.Add(ProductId.Of(new Guid("d43ed3e4-b474-4753-80ac-a2164a7f767c")), 1, 500);
 
                 var order2 = Order.Create(
                                 OrderId.Of(Guid.NewGuid()),
-                                CustomerId.Of(new Guid("189dc8dc-990f-48e0-a37b-e6f2b60b9d7d")),
+                                CustomerId.Of(new Guid("f14d320f-8f44-4b3a-aa9f-8c0c6ab18923")),
                                 OrderName.Of("ORD_2"),
                                 shippingAddress: address2,
                                 billingAddress: address2,
                                 payment2);
-                order2.Add(ProductId.Of(new Guid("4f136e9f-ff8c-4c1f-9a33-d12f689bdab8")), 1, 650);
-                order2.Add(ProductId.Of(new Guid("6ec1297b-ec0a-4aa1-be25-6726e3b51a27")), 2, 450);
+                order2.Add(ProductId.Of(new Guid("be1bece4-5708-4daf-92e5-5f9fabf51a4a")), 1, 500);
+                order2.Add(ProductId.Of(new Guid("7ea9b3fb-1f01-48b4-9e97-8346fe96caea")), 2, 500);
 
                 return new List<Order> { order1, order2 };
             }
