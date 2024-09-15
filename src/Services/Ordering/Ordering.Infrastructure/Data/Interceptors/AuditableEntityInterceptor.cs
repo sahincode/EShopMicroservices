@@ -2,11 +2,11 @@
 
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Ordering.Domain.Abstractions;
+
 
 namespace Ordering.Infrastructure.Data.Interceptors
 {
-    public class AuditableEintityInterceptor : SaveChangesInterceptor
+    public class AuditableEntityInterceptor : SaveChangesInterceptor
     {
         public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
         {
