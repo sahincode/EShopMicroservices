@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ordering.Domain.Events
+namespace Ordering.Application.Orders.EventHandlers
 {
-    public record OrderCreatedEvent(Order Order) : IDomainEvent;
-
+    internal class OrderUpdatedOrderHandler
+    {
+    }
 }
-   
