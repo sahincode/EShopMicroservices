@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ordering.Application.Orders.Queries.GetOrderByName
+namespace Ordering.Application.Orders.Queries.GetOrdersByName
 {
     public record GetOrdersByNameQuery(string Name):
-        IQuery<GetOrderByNameResult>;
-        public record GetOrderByNameResult(IEnumerable<OrderDto> Orders);
+        IQuery<GetOrdersByNameResult>;
+        public record GetOrdersByNameResult(IEnumerable<OrderDto> Orders);
 }

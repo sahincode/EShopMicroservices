@@ -1,4 +1,5 @@
 ﻿
+using Ordering.Domain.Events;
 using Ordering.Domain.ValueObjects;
 
 namespace Ordering.Domain.Models
@@ -32,7 +33,7 @@ namespace Ordering.Domain.Models
                 Payment = payment,
                 Status = OrderStatus.Pending
             };
-            order.AddDomainEvent(new OrderCreateEvent(order));
+            order.AddDomainEvent(new OrderCreatedEvent(order));
             return order;
         }
         public void Update( OrderName orderName,
