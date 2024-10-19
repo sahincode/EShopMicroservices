@@ -39,7 +39,7 @@ namespace Ordering.Infrastructure.Data.Configurations
                     addressBuilder.Property(n => n.LastName).
                    HasMaxLength(50).
                    IsRequired();
-                    addressBuilder.Property(n => n.EmailAdress).
+                    addressBuilder.Property(n => n.EmailAddress).
                     HasMaxLength(180).
                     IsRequired(); addressBuilder.Property(n => n.Country).
                     HasMaxLength(50);
@@ -58,7 +58,7 @@ namespace Ordering.Infrastructure.Data.Configurations
                   addressBuilder.Property(n => n.LastName).
                  HasMaxLength(50).
                  IsRequired();
-                  addressBuilder.Property(n => n.EmailAdress).
+                  addressBuilder.Property(n => n.EmailAddress).
                   HasMaxLength(180).
                   IsRequired(); addressBuilder.Property(n => n.Country).
                   HasMaxLength(50);

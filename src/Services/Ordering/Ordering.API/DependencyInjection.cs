@@ -6,6 +6,8 @@ namespace Ordering.API
     {
         public static IServiceCollection AddApiServices(this IServiceCollection services)
         {
+        //    services.AddCarter();
+         
             return services;
         }
         public static WebApplication UserApiServices(this WebApplication app)
