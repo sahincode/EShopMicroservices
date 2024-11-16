@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ordering.Application.Orders.EventHandlers
+namespace Ordering.Application.Orders.EventHandlers.Domain
 {
-    internal class OrderUpdatedEventHandler(ILogger<OrderUpdatedEventHandler> logger) :INotificationHandler<OrderUpdateEvent>
+    internal class OrderUpdatedEventHandler(ILogger<OrderUpdatedEventHandler> logger) : INotificationHandler<OrderUpdateEvent>
     {
         public Task Handle(OrderUpdateEvent notification, CancellationToken cancellationToken)
         {

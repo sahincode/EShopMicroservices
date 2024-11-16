@@ -1,4 +1,5 @@
 ﻿using Basket.API.Basket.GetBasket;
+using Basket.API.Dtos;
 using BuildingBlocks.Messaging.Events;
 using MediatR;
 

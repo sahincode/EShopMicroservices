@@ -29,7 +29,7 @@ namespace BuildingBlocks.Messaging.MassTransit
                         host.Username(configuration["MessageBroker:Password"]);
 
                     });
-                    configurator.ConfigureEndpoints(context)
+                    configurator.ConfigureEndpoints(context);
                  });
 
 

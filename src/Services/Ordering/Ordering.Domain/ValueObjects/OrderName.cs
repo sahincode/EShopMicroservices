@@ -14,7 +14,7 @@ namespace Ordering.Domain.ValueObjects
         public static OrderName Of(string value)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(value);
-            ArgumentOutOfRangeException.ThrowIfNotEqual(value.Length, DefalutLength);
+            //ArgumentOutOfRangeException.ThrowIfNotEqual(value.Length, DefalutLength);
             return new OrderName(value);
         }
 

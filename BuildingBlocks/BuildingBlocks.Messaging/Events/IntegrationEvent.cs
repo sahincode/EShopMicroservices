@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Messaging.Events
 {
- 
-public record IntegrationEvent
+
+    public record IntegrationEvent
     {
         public Guid Id => Guid.NewGuid();
-        public DateTime O0ccuredOn = DateTime.Now;
+        public DateTime OccurredOn = DateTime.Now;
         public string EventType => GetType().AssemblyQualifiedName;
 
+    }
 }
